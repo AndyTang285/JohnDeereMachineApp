@@ -6,4 +6,5 @@
     <string name="map">Map</string>
     <string name="dealer">Dealer</string>
     <string name="weather">Weather</string>
+    <string name="view_your_machines">VIEW YOUR MACHINES</string>
 </resources>

@@ -258,7 +258,7 @@
                     android:paddingTop="2dp"
                     android:paddingEnd="8dp"
                     android:paddingBottom="2dp"
-                    android:text="VIEW YOUR MACHINES"
+                    android:text="@string/view_your_machines"
                     android:textColor="@color/JDGreen"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
