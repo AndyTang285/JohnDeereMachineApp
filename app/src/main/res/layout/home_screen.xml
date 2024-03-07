@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:text="@string/hello"
+            android:text="@string/hello1"
             android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,36 +55,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/white_rectangle_background"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageMenu">
 
-            <EditText
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="100dp"
                 android:layout_weight="1"
-                android:background="@null"
-                android:hint="Search elements"
-                android:imeOptions="actionSearch"
-                android:inputType="text"
+                android:background="@drawable/yellow_background"
                 android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:importantForAutofill="no"/>
+                android:paddingEnd="15dp">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/search_icon_background"
-                android:contentDescription="@string/app_name"
-                android:padding="6dp"
-                android:src="@drawable/ic_search"
-                app:tint="@color/JDGreen" />
+                <TextView
+                    android:id="@+id/homeTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/_3_30_pm"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="75sp"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -101,14 +99,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/dateTime"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:background="@drawable/header_background_home_screen"
-                />
 
             <LinearLayout
                 android:id="@+id/homeMap"
@@ -244,7 +234,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/weather"
+                    android:text="@string/weather1"
                     android:textColor="@color/JDGreen"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
