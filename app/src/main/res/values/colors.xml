@@ -6,5 +6,6 @@
     <color name="JDGreen">#367c2b</color>
     <color name="JDYellow">#ffde00</color>
     <color name="JDGray100">#f0f0f0</color>
+    <color name="JDGray200">#dddddd</color>
 
 </resources>
