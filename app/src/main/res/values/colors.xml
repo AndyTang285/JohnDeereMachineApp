@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="JDGreen">#367c2b</color>
+    <color name="JDYellow">#ffde00</color>
+    <color name="JDGray100">#f0f0f0</color>
+
 </resources>
