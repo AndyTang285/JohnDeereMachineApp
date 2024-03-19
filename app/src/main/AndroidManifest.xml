@@ -13,6 +13,24 @@
         android:theme="@style/Theme.MARXTeamProject"
         tools:targetApi="31">
         <activity
+            android:name=".WeatherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DealerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".notesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mapActivity"
+            android:exported="false" />
+        <activity
             android:name=".CategoriesActivity"
             android:exported="false" />
         <activity
