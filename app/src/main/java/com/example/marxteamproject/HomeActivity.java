@@ -5,22 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
-    Button loginBtn;
+    TextView categoriesBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_screen);
-        loginBtn = findViewById(R.id.Login_btn);
-
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.home_screen);
+        categoriesBtn = findViewById(R.id.textViewMachines);
+        categoriesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent intent = new Intent(HomeActivity.this, CategoriesActivity.class);
                 startActivity(intent);
             }
         });
