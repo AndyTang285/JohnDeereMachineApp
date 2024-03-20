@@ -26,19 +26,19 @@ private ListView listView;
       ArrayList<String> list = new ArrayList<>();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.tractor_screen, R.id.status_info_text, list);
         listView.setAdapter(adapter);
-       //FirebaseDatabase database = FirebaseDatabase.getInstance();
-        //DatabaseReference tractorsRef = FirebaseDatabase.getInstance().getReference().child("Tractors");
-/*
+       FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference tractorsRef = FirebaseDatabase.getInstance().getReference().child("Tractors");
+
 
         DatabaseReference tractors1032E = tractorsRef.child("1032E");
         DatabaseReference tractors103E2MaintenanceInfo = tractors1032E.child("Maintenance");
         DatabaseReference tractors103E2PartsInfo = tractors1032E.child("Parts");
         DatabaseReference tractors103E2SpecsInfo = tractors1032E.child("Specs");
-*/
 
-        // tractors103E2SpecsInfo.addValueEventListener(new ValueEventListener() {
 
-    /*    FirebaseDatabase.getInstance().getReference("Tractors").addValueEventListener(new ValueEventListener() {
+
+
+       FirebaseDatabase.getInstance().getReference("tractors103E2SpecsInfo").addValueEventListener(new ValueEventListener() {
            @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list.clear();
@@ -52,7 +52,7 @@ private ListView listView;
             public void onCancelled(@NonNull DatabaseError error) {
             }
             });
-*/
+
 
 
     }
