@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1001570522645",
+    "project_id": "team-marx",
+    "storage_bucket": "team-marx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001570522645:android:376d8c653e2627de3b201c",
+        "android_client_info": {
+          "package_name": "MARXTeam_Projectapp.main"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrRdpVPbWw8FxEohkVugxH0TaLqZ8XAQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
