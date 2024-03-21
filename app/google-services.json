@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1001570522645",
+    "firebase_url": "https://team-marx-default-rtdb.firebaseio.com",
     "project_id": "team-marx",
     "storage_bucket": "team-marx.appspot.com"
   },
@@ -10,6 +11,25 @@
         "mobilesdk_app_id": "1:1001570522645:android:376d8c653e2627de3b201c",
         "android_client_info": {
           "package_name": "MARXTeam_Projectapp.main"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrRdpVPbWw8FxEohkVugxH0TaLqZ8XAQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001570522645:android:47bf29c75f9d6dc13b201c",
+        "android_client_info": {
+          "package_name": "com.example.marxteamproject"
         }
       },
       "oauth_client": [],
