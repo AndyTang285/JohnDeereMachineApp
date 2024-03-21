@@ -76,11 +76,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/_3_30_pm"
+                    android:text="Insert Image +"
                     android:textAlignment="center"
                     android:textStyle="bold"
-                    android:textSize="75sp"
-                    android:textColor="@color/black" />
+                    android:textSize="20sp"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
@@ -132,8 +132,6 @@
                     android:textColor="@color/JDGreen"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
-
-
 
             </LinearLayout>
 

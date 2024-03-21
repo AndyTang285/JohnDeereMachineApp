@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 public class MainActivity extends AppCompatActivity {
 
     Button loginBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
