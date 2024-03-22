@@ -2,10 +2,12 @@ package com.example.marxteamproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -17,28 +19,21 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tractor_screen);
-//References
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference Tractors = database.getReference("Tractors");
-        DatabaseReference Tractor1032E = Tractors.child("1032E");
-        DatabaseReference Tractor1032EMaintenance = Tractor1032E.child("Maintenance");
-        DatabaseReference Tractors1032EMaintenanceFuel = Tractor1032EMaintenance.child("Fuel");
-// Read from the database
-        Tractors1032EMaintenanceFuel.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                Log.d("FireBase", "Value is: " + value);
-            }
+        setContentView(R.layout.home_screen);
 
+        button = findViewById(R.id.tractorScreenButton);
+        setClickListener();
+    }
+    private void setClickListener() {
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.w("FireBase", "Failed to read value.", error.toException());
+            public void onClick(View v) {
+                setContentView(R.layout.tractor_screen);
             }
         });
     }
