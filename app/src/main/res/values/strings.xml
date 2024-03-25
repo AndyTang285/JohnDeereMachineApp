@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MARX Team Project</string>
+    <string name="tractor_page_header">Status/Info</string>
+    <string name="tractor_name">Tractor Name</string>
+    <string name="accesibility_description_tractor_image">Image of tractor</string>
+    <string name="status_label">Status</string>
+    <string name="status_info">Status info</string>
+    <string name="info_header">Info</string>
+    <string name="info_text">Info</string>
+    <string name="Back_button"> back</string>
+    <string name="info_box"> info </string>
 </resources>
