@@ -10,11 +10,9 @@ public class TractorScreen extends MainActivity{
 
    public ImageButton button;
     protected void onCreateView(Bundle savedInstanceState) {
-        setContentView(R.layout.tractor_screen);
         super.onCreate(savedInstanceState);
-        button = findViewById(R.id.image_back_button);
+        setContentView(R.layout.dealer_screen);
+        //button = findViewById(R.id.image_back_button);
     }
-
-
 
 }
