@@ -1,6 +1,5 @@
 package com.example.marxteamproject;
 
-import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -11,7 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class DatabaseActivity extends MainActivity {
+public class Database extends MainActivity {
     public static void Tractor() {
 //References
         FirebaseDatabase database = FirebaseDatabase.getInstance();

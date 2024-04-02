@@ -1,0 +1,149 @@
+{
+  "Test": {
+    "num": 21312312,
+    "num2": 324235,
+    "num3": 4532
+  },
+  "Tractors": {
+    "1032E": {
+      "Maintenance": {
+        "Fuel": 38
+      },
+      "Parts": {
+        "Cab": {
+          "Seat": {
+            "PartNum": "LVA14488"
+          },
+          "TieRod": {
+            "PartNum": "MIA881641"
+          }
+        },
+        "Engine": {
+          " InlineFuelFilter": {
+            "PartNum": "AM116304",
+            "Replace": 400
+          },
+          "Alternator": {
+            "PartNum": "LVA12357"
+          },
+          "Battery": {
+            "PartNum": "TA15224"
+          },
+          "BrakeDisk": {
+            "PartNum": "LVA16465"
+          },
+          "ClutchDisk": {
+            "PartNum": "LVA15954"
+          },
+          "FanBeltDrive": {
+            "PartNum": "MIU800681"
+          },
+          "FuelFilter": {
+            "PartNum": "MIU804763",
+            "Replace": 400
+          },
+          "OilFilter": {
+            "PartNum": "M806418",
+            "Replace": 200
+          },
+          "PrimaryAirFilter": {
+            "PartNum": "M112621",
+            "Replace": 400
+          }
+        },
+        "Transmission": {
+          "FilterPAK": {
+            "PartNum": "LVA21035"
+          },
+          "HydraulicFilter": {
+            "PartNum": "M112621",
+            "Replace": 200
+          }
+        }
+      },
+      "Specs": {
+        "HP": "21.5",
+        "HitchCapacity": "758",
+        "LiftHeight": "72",
+        "LoaderCapacity": "680",
+        "Weight": "1446"
+      }
+    },
+    "2032R": {
+      "Maintenance": {
+        "Fuel": 73
+      },
+      "Parts": {
+        "Electrical": {
+          "Battery": {
+            "PartNum": "TY26498"
+          },
+          "HeadLight": {
+            "PartNum": "LVA13392"
+          },
+          "IgnitionSwitch": {
+            "PartNum": "LVA803436"
+          },
+          "Key": {
+            "PartNum": "LVA803606"
+          },
+          "RotarySwitch": {
+            "PartNum": "M807905"
+          }
+        },
+        "Engine": {
+          "AirFilter": {
+            "PartNum": "M131802",
+            "Replace": 600
+          },
+          "EngineOil": {
+            "PartNum": "TY26668",
+            "Replace": 200
+          },
+          "FuelFilter": {
+            "PartNum": "Miu800645",
+            "Replace": 400
+          },
+          "HydrolicFilter": {
+            "PartNum": "LVU800097",
+            "Replace": 200
+          },
+          "OilFilter": {
+            "PartNum": "M806419"
+          },
+          "VBelt": {
+            "PartNum": "LVU30203"
+          }
+        },
+        "Fuel": {
+          "Air": {
+            "FilterCap": {
+              "PartNum": "TCU32729"
+            }
+          }
+        },
+        "MowerDeck": {
+          "GageWheels": {
+            "PartNum": "Am136720"
+          },
+          "MowerBlade": {
+            "PartNum": "M143504"
+          },
+          "MulchBlade": {
+            "PartNum": "M145719"
+          },
+          "VBelt": {
+            "PartNum": "M163990"
+          }
+        }
+      },
+      "Specs": {
+        "HP": 31.2,
+        "LiftCapacity": 1377,
+        "LiftHeight": 72,
+        "Weight": 2879,
+        "Width": 55.1
+      }
+    }
+  }
+}

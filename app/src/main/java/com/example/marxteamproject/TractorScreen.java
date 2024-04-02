@@ -1,27 +1,26 @@
 package com.example.marxteamproject;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-public class TractorScreen extends MainActivity{
+import androidx.appcompat.app.AppCompatActivity;
+
+public class TractorScreen extends AppCompatActivity {
 
    public ImageButton button;
-    protected void onCreateView(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.tractor_screen);
+        FireBaseStorage test = new FireBaseStorage();
         super.onCreate(savedInstanceState);
-        button = findViewById(R.id.image_back_button);
+       test.mymethod(findViewById(R.id.Tractor_image_1), this);
+       /* button = findViewById(R.id.image_back_button);
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TractorScreen.this, MainActivity.class);
-                startActivity(intent);
-            }
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(TractorScreen.this, MainActivity.class);
+            startActivity(intent);
         });
+
+        */
     }
     }

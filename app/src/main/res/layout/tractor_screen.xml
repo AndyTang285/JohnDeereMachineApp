@@ -32,7 +32,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tractor_name"
-                app:srcCompat="@android:drawable/ic_menu_gallery" />
+               />
 
             <TextView
                 android:id="@+id/tractor_name"
@@ -83,12 +83,11 @@
                 app:layout_constraintStart_toStartOf="parent">
 
 
-                <ListView
+                <TextView
                     android:id="@+id/status_info_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/status_info"
-                    android:textSize="20sp" />
+                     />
 
             </FrameLayout>
 
