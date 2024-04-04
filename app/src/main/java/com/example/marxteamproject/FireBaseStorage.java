@@ -29,7 +29,7 @@ public class FireBaseStorage extends FragmentActivity {
 
         Glide.with(context)
                 .load(storageReference)
-
+                .placeholder(R.drawable.placeholder)
                 .into(rImage);
 
 

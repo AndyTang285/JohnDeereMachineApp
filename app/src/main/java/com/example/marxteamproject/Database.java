@@ -11,26 +11,37 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Database extends MainActivity {
-    public static void Tractor() {
+    public static void Tractor(String TractorType, String ModelNum) {
 //References
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference Tractors = database.getReference("Tractors");
-        DatabaseReference Tractor1032E = Tractors.child("1032E");
-        DatabaseReference Tractor1032EMaintenance = Tractor1032E.child("Maintenance");
-        DatabaseReference Tractors1032EMaintenanceFuel = Tractor1032EMaintenance.child("Fuel");
-// Read from the database
-        Tractors1032EMaintenanceFuel.addValueEventListener(new ValueEventListener() {
+        DatabaseReference Combines = database.getReference(TractorType);
+        DatabaseReference CombineS650 = Combines.child(ModelNum);
+        DatabaseReference CombineS650Specs = CombineS650.child("Specs");
+        DatabaseReference CombineS650EngineHours = CombineS650Specs.child("Engine Hours");
+
+      // Read from the database
+        ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                Log.d("FireBase", "Value is: " + value);
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String axle = ds.child("Axle").getValue(String.class);
+                    String SeparatorHours = ds.child("Separator Hours").getValue(String.class);
+                    String EngineHr = ds.child("Engine Hours").getValue(String.class);
+                    String newsImageUrl = ds.child("newsImageUrl").getValue(String.class);
+                    String newsTitle = ds.child("newsTitle").getValue(String.class);
+                    String newsUrl = ds.child("newsUrl").getValue(String.class);
+                    Log.d("TAG", axle + " / " + SeparatorHours + " / " + EngineHr + " / " + newsImageUrl + " / " + newsTitle + " / " + newsUrl);
+                }
+
+
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.w("FireBase", "Failed to read value.", error.toException());
             }
-        });
-
+        };
+        CombineS650Specs.addListenerForSingleValueEvent(eventListener);
     }
 }
