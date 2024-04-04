@@ -23,5 +23,6 @@
     <string name="info_text">Info</string>
     <string name="Back_button"> back</string>
     <string name="info_box"> info </string>
+    <string name="add_new_note">Add New Note</string>
 
 </resources>
