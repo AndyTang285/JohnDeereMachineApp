@@ -1,11 +1,17 @@
 package com.example.marxteamproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
 
 public class NotesDetailedActivity extends AppCompatActivity {
     EditText titleEditText;
@@ -34,10 +40,31 @@ public class NotesDetailedActivity extends AppCompatActivity {
             return;
         }
 
-        Intent intent = new Intent(NotesDetailedActivity.this, NotesActivity.class);
-        startActivity(intent);
+        Note note = new Note();
+        note.setTitle(noteTitle);
+        note.setContent(noteContent);
+        note.setTimeStamp(Timestamp.now());
+        saveNoteToFireBase(note);
 
+    }
 
+    public void saveNoteToFireBase(Note note) {
 
+        DocumentReference documentReference;
+
+        documentReference = Utility.getCollectionReferenceForNotes().document();
+        documentReference.set(note).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+                    //note is added
+                    Utility.showToast(NotesDetailedActivity.this, "Notes added successfully");
+                    finish();
+                } else {
+                    //note is not added
+                    Utility.showToast(NotesDetailedActivity.this, "Failed while adding note");
+                }
+            }
+        });
     }
 }

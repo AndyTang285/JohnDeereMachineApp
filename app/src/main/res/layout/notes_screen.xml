@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/JDGray200"
     tools:context=".NotesActivity"
-    android:padding="16dp">
+
+    >
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_note_btn"
@@ -15,9 +16,22 @@
         android:backgroundTint="@color/JDGreen"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/baseline_10k_24"
+        android:layout_margin="16dp"
+        android:src="@drawable/add"
         android:tint="@color/white"/>
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        tools:listitem="@layout/notes_item">
+
+    </ListView> <ListView
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginTop="100dp"
+    tools:listitem="@layout/notes_item2">
+</ListView>
 
 
 </RelativeLayout>
