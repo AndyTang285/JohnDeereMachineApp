@@ -35,36 +35,41 @@ public class NotesDetailedActivity extends AppCompatActivity {
         String noteTitle = titleEditText.getText().toString();
         String noteContent = contentEditText.getText().toString();
 
-        if (noteTitle==null || noteContent.isEmpty()) {
-            titleEditText.setError("Please enter a title");
-            return;
-        }
+//        if (noteTitle==null || noteContent.isEmpty()) {
+//            titleEditText.setError("Please enter a title");
+//            return;
+//        }
 
         Note note = new Note();
         note.setTitle(noteTitle);
         note.setContent(noteContent);
         note.setTimeStamp(Timestamp.now());
-        saveNoteToFireBase(note);
 
+        saveNoteToFirebase(note);
     }
 
-    public void saveNoteToFireBase(Note note) {
+    public void saveNoteToFirebase(Note note) {
 
         DocumentReference documentReference;
 
         documentReference = Utility.getCollectionReferenceForNotes().document();
+
         documentReference.set(note).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+
                 if(task.isSuccessful()) {
                     //note is added
-                    Utility.showToast(NotesDetailedActivity.this, "Notes added successfully");
+                    Utility.showToast(NotesDetailedActivity.this,"Note added successfully");
                     finish();
                 } else {
-                    //note is not added
                     Utility.showToast(NotesDetailedActivity.this, "Failed while adding note");
                 }
             }
         });
+
+
+
     }
+
 }

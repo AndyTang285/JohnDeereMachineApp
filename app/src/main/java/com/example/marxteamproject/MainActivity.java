@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     EditText newEmailText;
     EditText  newPasswordText;
-    EditText confirmPasswordText;
     Button loginBtn;
     ProgressBar progressBar;
     TextView createAccountBtnTextView;
@@ -90,9 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     //login is success
                     if(firebaseAuth.getCurrentUser().isEmailVerified()) {
-                        //go to home screen\
+                        //go to home screen
                         startActivity(new Intent(MainActivity.this, HomeActivity.class));
-
                     } else {
                         Utility.showToast(MainActivity.this, "Email not verified, Please verify your email.");
                     }

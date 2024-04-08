@@ -12,7 +12,9 @@ public class NotesActivity extends AppCompatActivity {
     FloatingActionButton addNoteBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.notes_screen);
 
         addNoteBtn = findViewById(R.id.add_note_btn);
