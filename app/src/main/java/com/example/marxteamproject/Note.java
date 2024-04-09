@@ -2,6 +2,7 @@ package com.example.marxteamproject;
 
 import com.google.firebase.Timestamp;
 public class Note {
+
     String title;
     String content;
     Timestamp timeStamp;

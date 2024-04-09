@@ -15,22 +15,22 @@
         android:theme="@style/Theme.MARXTeamProject"
         tools:targetApi="31">
         <activity
+            android:name=".NoteDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotesActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateAccountActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="false" />
         <activity
-            android:name=".NotesDetailedActivity"
-            android:exported="false" />
-        <activity
             android:name=".WeatherActivity"
             android:exported="false" />
         <activity
             android:name=".DealerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NotesActivity"
             android:exported="false" />
         <activity
             android:name=".MapActivity"
