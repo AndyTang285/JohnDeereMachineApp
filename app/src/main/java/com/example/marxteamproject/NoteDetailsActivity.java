@@ -45,7 +45,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
         Note note = new Note();
         note.setTitle(noteTitle);
         note.setContent(noteContent);
-        note.setTimeStamp(Timestamp.now());
+        note.setTimestamp(Timestamp.now());
 
         saveNoteToFirebase(note);
     }

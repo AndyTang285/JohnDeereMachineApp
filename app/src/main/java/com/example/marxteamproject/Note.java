@@ -1,8 +1,8 @@
 package com.example.marxteamproject;
 
 import com.google.firebase.Timestamp;
-public class Note {
 
+public class Note {
     String title;
     String content;
     Timestamp timestamp;
@@ -26,11 +26,11 @@ public class Note {
         this.content = content;
     }
 
-    public Timestamp getTimeStamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimeStamp(Timestamp timeStamp) {
-        this.timestamp = timeStamp;
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 }
