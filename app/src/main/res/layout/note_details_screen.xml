@@ -70,5 +70,17 @@
 
     </LinearLayout>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:id="@+id/delete_note_btn"
+        android:text="delete"
+        android:layout_marginTop="12dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/red_btn_bg"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"/>
+
 
 </RelativeLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/JDYellow"
+    android:background="@drawable/field"
     tools:context=".NotesActivity">
 
     <RelativeLayout
@@ -19,7 +19,7 @@
             android:id="@+id/notes_page_title"
             android:text="Notes"
             android:textSize="32sp"
-            android:textColor="@color/JDGreen"
+            android:textColor="@color/white"
             android:textStyle="bold"/>
 
         <ImageButton
