@@ -5,7 +5,7 @@ public class Note {
 
     String title;
     String content;
-    Timestamp timeStamp;
+    Timestamp timestamp;
 
     public Note() {
     }
@@ -27,10 +27,10 @@ public class Note {
     }
 
     public Timestamp getTimeStamp() {
-        return timeStamp;
+        return timestamp;
     }
 
     public void setTimeStamp(Timestamp timeStamp) {
-        this.timeStamp = timeStamp;
+        this.timestamp = timeStamp;
     }
 }
