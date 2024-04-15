@@ -1,20 +1,46 @@
 package com.example.marxteamproject;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.TextView;
 
-public class TractorScreen extends MainActivity{
+import androidx.appcompat.app.AppCompatActivity;
 
-   public ImageButton button;
-    protected void onCreateView(Bundle savedInstanceState) {
+public class TractorScreen extends AppCompatActivity {
+
+
+   public TextView TractorTextView;
+   public String tractortype;
+   public String ModelNum;
+
+   public String InfoType;
+    protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.tractor_screen);
+
+        String TractorPhoto = AddTractor.TractorModelNum;
+        FireBaseStorage TractorImage = new FireBaseStorage();
         super.onCreate(savedInstanceState);
-        button = findViewById(R.id.image_back_button);
+       TractorImage.FirebaseImage(findViewById(R.id.Tractor_image_1), this, TractorPhoto);
+       TractorTextView = findViewById(R.id.status_info_text);
+       tractortype = AddTractor.MachineType;
+       ModelNum = AddTractor.TractorModelNum;
+      // tractortype = "Row Crop Tractors";
+      // ModelNum = "8R 250 (2021)";
+       InfoType = "Specs";
+       DatabaseInfo.Tractor(tractortype, ModelNum, TractorTextView, InfoType );
+        InfoType = "Info";
+        TractorTextView = findViewById(R.id.info_info_text);
+        TextView TractorName = findViewById(R.id.tractor_name);
+        TractorName.setText(ModelNum);
+        DatabaseInfo.Tractor(tractortype, ModelNum, TractorTextView, InfoType );
+
+       /* button = findViewById(R.id.image_back_button);
+
+
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(TractorScreen.this, MainActivity.class);
+            startActivity(intent);
+        });
+
+        */
     }
-
-
-
-}
+    }
