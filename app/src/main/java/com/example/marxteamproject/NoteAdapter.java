@@ -37,7 +37,6 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
             intent.putExtra("docId",docId);
             context.startActivity(intent);
         });
-
     }
 
     @NonNull
