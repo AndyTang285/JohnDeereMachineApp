@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">MARX Team Project</string>
+
+    <string name="hello" />
+    <string name="weather">Weather\n</string>
+    <string name="weather1">Weather</string>
+    <string name="dealer">Dealer</string>
+    <string name="map">Map</string>
+    <string name="notes">Notes</string>
+    <string name="frieza">Frieza</string>
+    <string name="hello1">Hello</string>
+    <string name="view_your_machines">VIEW YOUR MACHINES</string>
+    <string name="_3_30_pm">3:30 PM</string>
+    <string name="login">Login</string>
+    <string name="name">Name</string>
+
     <string name="tractor_page_header">Status/Info</string>
     <string name="tractor_name">Tractor Name</string>
     <string name="accesibility_description_tractor_image">Image of tractor</string>
