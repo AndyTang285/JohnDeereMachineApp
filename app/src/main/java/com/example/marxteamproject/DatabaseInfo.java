@@ -17,6 +17,7 @@ import java.util.List;
 public class DatabaseInfo {
     public static void Tractor(String TractorType, String ModelNum, TextView text, String type) {
         List<String> myList = new ArrayList<>();
+
 //References
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference Combines = database.getReference(TractorType);
@@ -29,8 +30,8 @@ public class DatabaseInfo {
                 myList.add(snapshot.getKey() + ": " + snapshot.getValue() + "\n");
                 String List = myList.toString();
                 List = List.replace("[" , " ").replace("]", "").replace(",", "");
-
                 text.setText(List);
+
             }
 
 

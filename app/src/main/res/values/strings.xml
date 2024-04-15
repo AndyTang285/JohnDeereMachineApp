@@ -9,4 +9,12 @@
     <string name="info_text">Info</string>
     <string name="Back_button"> back</string>
     <string name="info_box"> info </string>
+    <string name="click_quot_quot_to_add_tractor">Click \"+\" to add tractor</string>
+    <string name="Tractor_num">Tractor Model Num</string>
+    <string name="TractorType">Tractor Type</string>
+    <string name="submit">Submit</string>
+    <string name="TractorDisplayPageHeader">Tractors</string>
+    <string name="todo">TODO</string>
+    <string name="button">Button</string>
+    <string name="tractor1">Tractor1</string>
 </resources>

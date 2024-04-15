@@ -29,6 +29,12 @@
 
 
         </activity>
+        <activity
+            android:name=".AddTractor"
+            android:exported="true">
+
+
+        </activity>
     </application>
 
 </manifest>

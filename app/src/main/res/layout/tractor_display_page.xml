@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/tractor_display_header"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:background="#367C2B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tractor_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/TractorDisplayPageHeader"
+            android:textSize="24sp" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:contentDescription="@string/tractor1"
+        android:layout_width="104dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tractor_display_header"
+        app:srcCompat="@drawable/placeholder" />
+</androidx.constraintlayout.widget.ConstraintLayout>

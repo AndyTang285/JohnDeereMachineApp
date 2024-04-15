@@ -12,12 +12,11 @@ import com.google.firebase.storage.StorageReference;
 
 public class FireBaseStorage extends FragmentActivity {
 
-
-    public void FirebaseImage(ImageView rImage, Context context) {
+    public void FirebaseImage(ImageView rImage, Context context, String TractorPhoto) {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        StorageReference TractorImage = storageRef.child("/Tractors/1032E/1032E.avif");
+        StorageReference TractorImage = storageRef.child( "/Tractors/" + TractorPhoto + ".jpg");
         Glide.with(context)
                 .load(TractorImage)
                 .placeholder(R.drawable.placeholder)
