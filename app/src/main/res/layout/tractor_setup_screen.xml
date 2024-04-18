@@ -40,7 +40,6 @@
         android:layout_width="295dp"
         android:layout_height="68dp"
         android:layout_marginStart="58dp"
-        android:layout_marginTop="256dp"
         android:layout_marginEnd="58dp"
         android:layout_marginBottom="245dp"
         android:gravity="center"
@@ -49,6 +48,5 @@
         app:layout_constraintBottom_toTopOf="@+id/add_tractor_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tractor_setup_header"
         tools:ignore="TextSizeCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

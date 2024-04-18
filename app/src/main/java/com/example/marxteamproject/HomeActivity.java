@@ -60,7 +60,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                setContentView(R.layout.tractor_screen);
+                Intent intent = new Intent(HomeActivity.this, TractorSetupScreen.class);
+                startActivity(intent);
 
             }
         });

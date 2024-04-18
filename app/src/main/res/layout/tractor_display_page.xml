@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/add_tractor_ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="319dp"
+        android:backgroundTint="#80FFFFFF"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/add_tractor" />
 
     <FrameLayout
         android:id="@+id/tractor_display_header"
@@ -22,14 +35,51 @@
             android:textSize="24sp" />
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:contentDescription="@string/tractor1"
-        android:layout_width="104dp"
-        android:layout_height="101dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="31dp"
+    <LinearLayout
+        android:id="@+id/LinearLayoutDisplay"
+        android:layout_width="410dp"
+        android:layout_height="492dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/add_tractor_ImageButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tractor_display_header"
-        app:srcCompat="@drawable/placeholder" />
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageView
+            android:id="@+id/Tractor_image1"
+            android:layout_width="338dp"
+            android:layout_height="115dp"
+            android:layout_gravity="center|fill"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="31dp"
+            android:contentDescription="@string/tractor1"
+            app:srcCompat="@drawable/placeholder" />
+
+        <ImageView
+            android:id="@+id/Tractor_image2"
+            android:layout_width="335dp"
+            android:layout_height="115dp"
+            android:layout_gravity="center|fill"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="31dp"
+            android:contentDescription="@string/tractor1"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/placeholder" />
+
+        <ImageView
+            android:id="@+id/Tractor_image3"
+            android:layout_width="335dp"
+            android:layout_height="115dp"
+            android:layout_gravity="center|fill"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="31dp"
+            android:contentDescription="@string/tractor1"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/placeholder" />
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

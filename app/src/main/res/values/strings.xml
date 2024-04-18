@@ -31,4 +31,6 @@
     <string name="todo">TODO</string>
     <string name="button">Button</string>
     <string name="tractor1">Tractor1</string>
+    <string name="TractorDescription">Description</string>
+    <string name="Tractor1Name">Tractor Name</string>
 </resources>

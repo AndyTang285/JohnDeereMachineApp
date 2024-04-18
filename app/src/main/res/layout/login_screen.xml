@@ -20,7 +20,7 @@
             android:layout_height="160dp" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/Tractor_image_1"
             android:layout_width="211dp"
             android:layout_height="151dp"
             android:src="@drawable/logo" />
