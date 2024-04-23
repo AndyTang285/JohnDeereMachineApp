@@ -24,7 +24,7 @@ public class Utility {
                 .document(currentUser.getUid()).collection("my_notes");
     }
 
-    static CollectionReference getTractorCollectionReferenceForNotes() {
+    static CollectionReference getCollectionReferenceForTractors() {
         FirebaseUser currentUser =  FirebaseAuth.getInstance().getCurrentUser();
         return FirebaseFirestore.getInstance().collection("Tractors")
                 .document(currentUser.getUid()).collection("my_tractor");
