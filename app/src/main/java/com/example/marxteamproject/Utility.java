@@ -24,6 +24,12 @@ public class Utility {
                 .document(currentUser.getUid()).collection("my_notes");
     }
 
+    static CollectionReference getTractorCollectionReferenceForNotes() {
+        FirebaseUser currentUser =  FirebaseAuth.getInstance().getCurrentUser();
+        return FirebaseFirestore.getInstance().collection("Tractors")
+                .document(currentUser.getUid()).collection("my_tractor");
+    }
+
     static String timestampToString(Timestamp timestamp) {
         return new SimpleDateFormat("MM/dd/yyyy").format(timestamp.toDate());
     }
