@@ -33,4 +33,5 @@
     <string name="tractor1">Tractor1</string>
     <string name="TractorDescription">Description</string>
     <string name="Tractor1Name">Tractor Name</string>
+    <string name="TractorForumHeader">Tractor Forum</string>
 </resources>

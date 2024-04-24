@@ -13,7 +13,7 @@ public class AddTractor extends AppCompatActivity {
 
     Button Sbutton;
     EditText TractorNum;
-    EditText TractorType;
+    EditText TractorType; 
     public static String TractorModelNum;
     public static String MachineType;
 
@@ -21,17 +21,19 @@ public class AddTractor extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tractor_add_forum);
-
-        Sbutton = (Button) findViewById(R.id.submit_button);
-        TractorNum = (EditText) findViewById(R.id.Tractor_name);
-        TractorType = (EditText) findViewById(R.id.Tractor_type);
+        addUserTractor tractor = new addUserTractor();
+        Sbutton = findViewById(R.id.submit_button);
+        TractorNum = findViewById(R.id.Tractor_name);
+        TractorType = findViewById(R.id.Tractor_type);
 
         Sbutton.setOnClickListener(
                 view -> {
+
                     MachineType = TractorType.getText().toString();
                     TractorModelNum = TractorNum.getText().toString();
-                    Intent intent = new Intent(AddTractor.this, TractorScreen.class);
-                    startActivity(intent);
+                    tractor.saveNoteToFirebase(TractorModelNum , "work");
+                  //  Intent intent = new Intent(AddTractor.this, TractorScreen.class);
+                   // startActivity(intent);
                 });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,

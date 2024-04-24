@@ -17,6 +17,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/add_tractor" />
 
+    <ImageView
+        android:id="@+id/Tractor_image1"
+        android:layout_width="338dp"
+        android:layout_height="115dp"
+        android:layout_gravity="center|fill"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="30dp"
+        android:contentDescription="@string/tractor1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tractor_display_header"
+        app:srcCompat="@drawable/placeholder" />
+
+    <ImageView
+        android:id="@+id/Tractor_image2"
+        android:layout_width="335dp"
+        android:layout_height="115dp"
+        android:layout_gravity="center|fill"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:contentDescription="@string/tractor1"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tractor_image1"
+        app:srcCompat="@drawable/placeholder" />
+
+    <ImageView
+        android:id="@+id/Tractor_image3"
+        android:layout_width="335dp"
+        android:layout_height="115dp"
+        android:layout_gravity="center|fill"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:contentDescription="@string/tractor1"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tractor_image2"
+        app:srcCompat="@drawable/placeholder" />
+
     <FrameLayout
         android:id="@+id/tractor_display_header"
         android:layout_width="0dp"
@@ -33,53 +77,8 @@
             android:gravity="center"
             android:text="@string/TractorDisplayPageHeader"
             android:textSize="24sp" />
+
     </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayoutDisplay"
-        android:layout_width="410dp"
-        android:layout_height="492dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/add_tractor_ImageButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tractor_display_header"
-        app:layout_constraintVertical_bias="1.0">
-
-        <ImageView
-            android:id="@+id/Tractor_image1"
-            android:layout_width="338dp"
-            android:layout_height="115dp"
-            android:layout_gravity="center|fill"
-            android:layout_marginStart="34dp"
-            android:layout_marginTop="31dp"
-            android:contentDescription="@string/tractor1"
-            app:srcCompat="@drawable/placeholder" />
-
-        <ImageView
-            android:id="@+id/Tractor_image2"
-            android:layout_width="335dp"
-            android:layout_height="115dp"
-            android:layout_gravity="center|fill"
-            android:layout_marginStart="34dp"
-            android:layout_marginTop="31dp"
-            android:contentDescription="@string/tractor1"
-            android:visibility="invisible"
-            app:srcCompat="@drawable/placeholder" />
-
-        <ImageView
-            android:id="@+id/Tractor_image3"
-            android:layout_width="335dp"
-            android:layout_height="115dp"
-            android:layout_gravity="center|fill"
-            android:layout_marginStart="34dp"
-            android:layout_marginTop="31dp"
-            android:contentDescription="@string/tractor1"
-            android:visibility="invisible"
-            app:srcCompat="@drawable/placeholder" />
-
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
