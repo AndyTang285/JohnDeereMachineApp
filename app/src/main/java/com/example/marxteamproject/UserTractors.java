@@ -7,10 +7,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class UserTractors {
-
 
 
     static CollectionReference getCollectionReferenceForTractor(String docId) {
