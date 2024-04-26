@@ -2,6 +2,7 @@ package com.example.marxteamproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -32,8 +33,10 @@ public class AddTractor extends AppCompatActivity {
                     MachineType = TractorType.getText().toString();
                     TractorModelNum = TractorNum.getText().toString();
                     tractor.saveNoteToFirebase(TractorModelNum , "work", MachineType);
+                    Log.w("current" , tractor.getTractorNum().toString());
                     Intent intent = new Intent(AddTractor.this, TractorScreen.class);
                     startActivity(intent);
+
                 });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
