@@ -13,14 +13,14 @@ import java.util.Map;
 
 public class addUserTractor {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    int i = 0;
-    public CollectionReference documentReference;
+    private static int i = 0;
+    private static CollectionReference documentReference;
    public Map<String, Object> tractors = new HashMap<>();
-    public Map<String, Object> currentTractors = new HashMap<>();
+    private static Map<String, Object> currentTractors = new HashMap<>();
 
     public void saveNoteToFirebase(String tractor, String docId, String tractorType) {
 
-        documentReference = db.collection("tractors").document("default").collection(docId);
+        this.documentReference = db.collection("tractors").document("default").collection(docId);
         tractors.put("tractorModelNum", tractor);
        // tractors.put("tractorType", tractorType);
         documentReference
@@ -30,7 +30,7 @@ public class addUserTractor {
     //update note
 //   documentReference = UserTractors.getCollectionReferenceForTractor(docId).document();
 // documentReference.set(tractor);
-    public Map<String, Object> getTractorNum()
+    public static Map<String, Object> getTractorNum()
 
     {
         documentReference
@@ -38,11 +38,10 @@ public class addUserTractor {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            currentTractors.put(String.valueOf(i), document.getData());
+                            currentTractors.put(String.valueOf(i), document.getData().toString().replace("tractorModelNum=", ""));
                             currentTractors.replace(String.valueOf(i), "{", "");
-                            currentTractors.replace("tractorType=", "");
-                            currentTractors.replace("tractorModelNum=", "");
-                            currentTractors.replace("}", "");
+                            currentTractors.replace(String.valueOf(i), "tractorType", "");
+                            currentTractors.replace(String.valueOf(i), "}", "");
 
                           Log.d("Current", currentTractors.toString());
 

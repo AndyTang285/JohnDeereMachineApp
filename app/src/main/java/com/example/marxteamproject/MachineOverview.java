@@ -1,5 +1,6 @@
 package com.example.marxteamproject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,22 +18,38 @@ public class MachineOverview extends AppCompatActivity {
     Map<String, Object> currentTractors = new HashMap<>();
     public ImageView image;
    // TextView tractorName;
+    @SuppressLint("UseCompatLoadingForDrawables")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        int i = 0;
+        int e = 0;
+        String tractorModelNum;
         setContentView(R.layout.tractor_display_page);
         addButton = findViewById(R.id.add_tractor_ImageButton);
-        image = findViewById(R.id.Tractor_image1);
+       // image = findViewById(R.id.Tractor_image1);
         FireBaseStorage TractorImage1 = new FireBaseStorage();
-        addUserTractor tractors = new addUserTractor();
-        currentTractors = tractors.getTractorNum();
+        currentTractors = addUserTractor.getTractorNum();
+         ImageView[] images = {
+          findViewById(R.id.Tractor_image1),
+          findViewById(R.id.Tractor_image2),
+          findViewById(R.id.Tractor_image3)
+        };
+
+        while(currentTractors.get(String.valueOf(i)) != null && e <= 2){
+
+//Tractor 1 Image load
+            tractorModelNum = (String) currentTractors.get(String.valueOf(i));
+            tractorModelNum = tractorModelNum.replace("{", "").replace("}","");
+                //image.setImageResource(images[e]);
+            TractorImage1.setFirebaseImage(tractorModelNum);
+                TractorImage1.getFirebaseImage((images[e]), this);
+                e++;
+            i++;
+        }
+//make sure tractor image isnt already assigned
      //   Log.d("Current", tractors.getTractorNum().toString());
 
-        if(image.getDrawable().getConstantState() == this.getResources().getDrawable(R.drawable.placeholder).getConstantState()) {
-//Tractor 1 Image load
-            TractorImage1.setFirebaseImage(AddTractor.TractorModelNum);
-            TractorImage1.getFirebaseImage(findViewById(R.id.Tractor_image1), this);
 
-        }
 
 
 
