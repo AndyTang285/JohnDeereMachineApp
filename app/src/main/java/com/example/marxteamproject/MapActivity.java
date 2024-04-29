@@ -31,6 +31,8 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import android.Manifest;
+import android.os.Handler;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -38,7 +40,8 @@ import java.util.List;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
+    private GoogleMap map;
+    public static int LOCATION_REQUEST_CODE = 100;
 
     // creating a variable
     // for search view.
@@ -47,6 +50,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     //initializing system to find current location
     FusedLocationProviderClient fusedLocationProviderClient;
 
+    Handler handler;
+
+    long refreshTime = 5000; //1000 = 1sec
+    Runnable runnable;
     //initializing SupportMapFragment to get the map screen
     SupportMapFragment mapFragment;
 
@@ -61,29 +68,22 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         // Obtain the SupportMapFragment and get notified
         // when the map is ready to be used.
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
+        if(mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
 
         fusedLocationProviderClient = (FusedLocationProviderClient) LocationServices.getFusedLocationProviderClient(this);
 
-        Dexter.withContext(getApplicationContext()).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener() {
+        handler = new Handler();
+
+        handler.postDelayed(runnable = new Runnable() {
             @Override
-            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-
-                getCurrentLocation();
-
+            public void run() {
+                handler.postDelayed(runnable,refreshTime);
+                checkLocationPermission();
             }
+        }, refreshTime );
 
-            @Override
-            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-
-            }
-
-            @Override
-            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-
-                permissionToken.continuePermissionRequest();
-
-            }
-        }).check();
 
         // adding on query listener for our search view.
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -117,10 +117,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
 
                     // on below line we are adding marker to that position.
-                    mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                    map.addMarker(new MarkerOptions().position(latLng).title(location));
 
                     // below line is to animate camera to that position.
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
                 }
                 return false;
             }
@@ -130,16 +130,36 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 return false;
             }
         });
-        // at last we calling our map fragment to update.
-        mapFragment.getMapAsync(this);
+    }
+
+    private void checkLocationPermission() {
+        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            getUserLocation();
+
+        } else {
+            requestForPermissions();
+        }
+    }
+
+    private void requestForPermissions() {
+        ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE );
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == LOCATION_REQUEST_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permission Accepted", Toast.LENGTH_SHORT).show();
+            } else  {
+                Toast.makeText(this, "Permission Rejected", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
-    public void getCurrentLocation() {
+    public void getUserLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -155,24 +175,28 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             @Override
             public void onSuccess(Location location) {
 
-                mapFragment.getMapAsync(new OnMapReadyCallback() {
-                    @Override
-                    public void onMapReady(@NonNull GoogleMap googleMap) {
-                        if (location != null) {
+                if (location != null) {
 
-                            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                    double lat = location.getLatitude();
+                    double lng = location.getLongitude();
 
-                            MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Current Location");
-                            mMap.addMarker(markerOptions);
-                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                    LatLng userLocation = new LatLng(lat, lng);
 
-                        } else {
-                            Toast.makeText(MapActivity.this, "Please allow location permission", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                    map.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
+                    map.animateCamera(CameraUpdateFactory.zoomTo(12));
+                    map.addMarker(new MarkerOptions().position(userLocation).title("Me"));
+
+                    Log.i("XOXO", "" + lat + " " + lng);
+
+                }
 
             }
         });
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+        map.getUiSettings().setMyLocationButtonEnabled(true);
     }
 }
