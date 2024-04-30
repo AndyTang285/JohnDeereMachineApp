@@ -52,7 +52,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     Handler handler;
 
-    long refreshTime = 5000; //1000 = 1sec
+    long refreshTime = 2000; //1000 = 1sec
     Runnable runnable;
     //initializing SupportMapFragment to get the map screen
     SupportMapFragment mapFragment;
@@ -183,8 +183,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     LatLng userLocation = new LatLng(lat, lng);
 
                     map.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
-                    map.animateCamera(CameraUpdateFactory.zoomTo(12));
-                    map.addMarker(new MarkerOptions().position(userLocation).title("Me"));
+                    map.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+                    if (map != null) {
+                        map.clear();
+                        map.addMarker(new MarkerOptions().position(userLocation).title("Me"));
+                    }
 
                     Log.i("XOXO", "" + lat + " " + lng);
 
