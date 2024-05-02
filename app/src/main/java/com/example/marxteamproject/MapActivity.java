@@ -11,7 +11,6 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import com.example.marxteamproject.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,16 +18,15 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
+import com.google.firebase.Firebase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import android.Manifest;
 import android.os.Handler;
@@ -56,6 +54,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     Runnable runnable;
     //initializing SupportMapFragment to get the map screen
     SupportMapFragment mapFragment;
+
+    //tractor coordinates
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    DocumentReference docRef = db.collection("tractors").document("default");
+    CollectionReference home = docRef.collection("home");
+    CollectionReference work = docRef.collection("work");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +125,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
                     // below line is to animate camera to that position.
                     map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                    handler.removeCallbacks(runnable);
                 }
                 return false;
             }
@@ -128,6 +133,20 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
+            }
+        });
+
+        work.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for(QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                    String tractorID = document.getId();
+                   /* double tractorLatitude = document.getDouble("tractorLatitude");
+                    double tractorLongitude = document.getDouble("tractorLongitude");
+                    String lat = Double.toString(tractorLatitude);
+                    String longitude = Double.toString(tractorLongitude);
+                    Log.i("XDXD", tractorID + "Latitude: " + lat + " " + "Longitude: " + longitude);*/
+                }
             }
         });
     }
