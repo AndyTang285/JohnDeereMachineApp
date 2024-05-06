@@ -46,6 +46,7 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/current_location"
         android:backgroundTint="@color/white"
         android:src="@drawable/add"
         app:layout_anchor="@id/map_bottom_bar"

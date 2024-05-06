@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.Firebase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -39,6 +40,8 @@ import java.util.List;
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap map;
+
+    FloatingActionButton currentLocationBtn;
     public static int LOCATION_REQUEST_CODE = 100;
 
     // creating a variable
@@ -69,6 +72,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         // initializing our search view.
         searchView = findViewById(R.id.map_search);
 
+        //find current location button from the layout
+        currentLocationBtn = findViewById(R.id.current_location);
+
+        //when clicked, finds current location again
+        currentLocationBtn.setOnClickListener((v -> handler()));
+
+
         // Obtain the SupportMapFragment and get notified
         // when the map is ready to be used.
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
@@ -78,16 +88,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         fusedLocationProviderClient = (FusedLocationProviderClient) LocationServices.getFusedLocationProviderClient(this);
 
-        handler = new Handler();
-
-        handler.postDelayed(runnable = new Runnable() {
-            @Override
-            public void run() {
-                handler.postDelayed(runnable,refreshTime);
-                checkLocationPermission();
-            }
-        }, refreshTime );
-
+        handler();
 
         // adding on query listener for our search view.
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -141,14 +142,27 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for(QueryDocumentSnapshot document : queryDocumentSnapshots) {
                     String tractorID = document.getId();
-                   /* double tractorLatitude = document.getDouble("tractorLatitude");
+                    String tractorName = document.getString("tractorName");
+                    double tractorLatitude = document.getDouble("tractorLatitude");
                     double tractorLongitude = document.getDouble("tractorLongitude");
-                    String lat = Double.toString(tractorLatitude);
-                    String longitude = Double.toString(tractorLongitude);
-                    Log.i("XDXD", tractorID + "Latitude: " + lat + " " + "Longitude: " + longitude);*/
+                    Log.i("XDXD", tractorID + "Latitude: " + tractorLatitude + " " + "Longitude: " + tractorLongitude);
+                    LatLng tractorLocation = new LatLng(tractorLatitude, tractorLongitude);
+                    map.addMarker(new MarkerOptions().position(tractorLocation).title(tractorName));
                 }
             }
         });
+    }
+
+    private void handler() {
+        handler = new Handler();
+
+        handler.postDelayed(runnable = new Runnable() {
+            @Override
+            public void run() {
+                handler.postDelayed(runnable,refreshTime);
+                checkLocationPermission();
+            }
+        }, refreshTime );
     }
 
     private void checkLocationPermission() {
