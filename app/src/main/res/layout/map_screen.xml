@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/current_location"
         android:backgroundTint="@color/white"
-        android:src="@drawable/add"
+        android:src="@drawable/currenticon"
         app:layout_anchor="@id/map_bottom_bar"
         app:maxImageSize="40dp"
         app:tint="@color/JDGreen" />
