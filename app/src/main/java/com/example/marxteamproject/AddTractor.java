@@ -47,10 +47,10 @@ public class AddTractor extends AppCompatActivity {
         textView2.setAdapter(adapter2);
 
 
-        }
+    }
 
 
-    private static final String[] TractorModelNumbers = new String[] {
+    private static final String[] TractorModelNumbers = new String[]{
 //Combines
             "S650 (2014)",
             "S690 (2021)",

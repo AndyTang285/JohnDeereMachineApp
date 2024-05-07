@@ -31,4 +31,8 @@
     <string name="todo">TODO</string>
     <string name="button">Button</string>
     <string name="tractor1">Tractor1</string>
+    <string name="workCButton1">Work</string>
+    <string name="homeCButton1">Home</string>
+    <string name="nothing" />
+    <string name="extraBackText">Back</string>
 </resources>

@@ -59,8 +59,8 @@ public class HomeActivity extends AppCompatActivity {
         categoriesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                setContentView(R.layout.tractor_screen);
+                Intent intent = new Intent(HomeActivity.this, CategoriesActivity.class);
+                startActivity(intent);
 
             }
         });

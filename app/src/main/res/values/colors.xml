@@ -7,6 +7,9 @@
     <color name="JDYellow">#ffde00</color>
     <color name="JDGray100">#f0f0f0</color>
     <color name="JDGray200">#dddddd</color>
+    <color name="ElectricBlue">#7EE8FA</color>
+    <color name="Fandango">#A4036F</color>
+
 
     <color name="yellow100">#8A2BE2</color>
     <color name="yellow200">#fff68f</color>
@@ -17,5 +20,6 @@
 
 
     <color name="gray"> #D9D9D9</color>
+    <color name="Fandango_dark">#8C035E</color>
 
 </resources>
