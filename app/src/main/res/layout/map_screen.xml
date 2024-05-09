@@ -53,5 +53,22 @@
         app:maxImageSize="40dp"
         app:tint="@color/JDGreen" />
 
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/pin_info_page"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:background="@color/JDGreen">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pin_name"
+            android:hint="Name of your pin"
+            />
+
+    </LinearLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

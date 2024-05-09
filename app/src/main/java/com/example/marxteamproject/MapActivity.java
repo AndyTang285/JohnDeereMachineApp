@@ -17,6 +17,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.AdvancedMarkerOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,6 +33,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import android.Manifest;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -47,6 +50,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     // creating a variable
     // for search view.
     SearchView searchView;
+    LinearLayout pinInfoPg;
 
     //initializing system to find current location
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -137,17 +141,18 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         });
 
+
         work.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for(QueryDocumentSnapshot document : queryDocumentSnapshots) {
                     String tractorID = document.getId();
-                    String tractorName = document.getString("tractorName");
+                    /*String tractorName = document.getString("tractorName");
                     double tractorLatitude = document.getDouble("tractorLatitude");
                     double tractorLongitude = document.getDouble("tractorLongitude");
                     Log.i("XDXD", tractorID + "Latitude: " + tractorLatitude + " " + "Longitude: " + tractorLongitude);
                     LatLng tractorLocation = new LatLng(tractorLatitude, tractorLongitude);
-                    map.addMarker(new MarkerOptions().position(tractorLocation).title(tractorName));
+                    map.addMarker(new MarkerOptions().position(tractorLocation).title(tractorName));*/
                 }
             }
         });
@@ -164,6 +169,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         }, refreshTime );
     }
+
 
     private void checkLocationPermission() {
         if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
@@ -224,16 +230,26 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     }
 
                     Log.i("XOXO", "" + lat + " " + lng);
-
                 }
-
             }
         });
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
         map.getUiSettings().setMyLocationButtonEnabled(true);
+
+        map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(@NonNull LatLng latLng) {
+                handler.removeCallbacks(runnable);
+                map.addMarker(new AdvancedMarkerOptions().position(latLng));
+                pinInfoPg.setVisibility(View.VISIBLE);
+
+            }
+        });
+
     }
 }
