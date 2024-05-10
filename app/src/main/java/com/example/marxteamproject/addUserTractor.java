@@ -10,17 +10,18 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class addUserTractor {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static int i = 0;
     private static CollectionReference documentReference;
    public Map<String, Object> tractors = new HashMap<>();
-    private static Map<String, Object> currentTractors = new HashMap<>();
+    private static  Map<String, Object> currentTractors = new HashMap<>();
 
     public void saveNoteToFirebase(String tractor, String docId, String tractorType) {
 
-        this.documentReference = db.collection("tractors").document("default").collection(docId);
+        documentReference = db.collection("tractors").document("default").collection(docId);
         tractors.put("tractorModelNum", tractor);
        // tractors.put("tractorType", tractorType);
         documentReference
@@ -38,10 +39,7 @@ public class addUserTractor {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            currentTractors.put(String.valueOf(i), document.getData().toString().replace("tractorModelNum=", ""));
-                            currentTractors.replace(String.valueOf(i), "{", "");
-                            currentTractors.replace(String.valueOf(i), "tractorType", "");
-                            currentTractors.replace(String.valueOf(i), "}", "");
+                            currentTractors.put(String.valueOf(i), Objects.requireNonNull(document.get("tractorModelNum")).toString());
 
                           Log.d("Current", currentTractors.toString());
 
