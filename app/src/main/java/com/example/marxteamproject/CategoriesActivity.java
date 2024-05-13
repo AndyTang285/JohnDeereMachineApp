@@ -11,8 +11,6 @@ public class CategoriesActivity extends AppCompatActivity {
 
     Button work_c_button;
     Button home_c_button;
-    Button home_c_buttonSmall;
-    Button work_c_buttonSmall;
     Button back_from_categories;
 
     @Override
@@ -21,8 +19,6 @@ public class CategoriesActivity extends AppCompatActivity {
         setContentView(R.layout.categories_screen);
         work_c_button = findViewById(R.id.workCButton);
         home_c_button = findViewById(R.id.homeCButton);
-        home_c_buttonSmall = findViewById(R.id.homeCButtonSmall);
-        work_c_buttonSmall = findViewById(R.id.workButtonSmall);
         back_from_categories = findViewById(R.id.backFromCategories);
 
 
@@ -30,7 +26,6 @@ public class CategoriesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 work_c_button.setTranslationZ(0);
-                home_c_buttonSmall.setTranslationZ(500);
                 Intent intent = new Intent(CategoriesActivity.this, AddTractor.class);
                 startActivity(intent);
             }
@@ -40,23 +35,6 @@ public class CategoriesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 home_c_button.setTranslationZ(0);
-                work_c_buttonSmall.setTranslationZ(500);
-                Intent intent = new Intent(CategoriesActivity.this, AddTractor.class);
-                startActivity(intent);
-            }
-        });
-
-        home_c_buttonSmall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CategoriesActivity.this, AddTractor.class);
-                startActivity(intent);
-            }
-        });
-
-        work_c_buttonSmall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 Intent intent = new Intent(CategoriesActivity.this, AddTractor.class);
                 startActivity(intent);
             }
@@ -65,7 +43,6 @@ public class CategoriesActivity extends AppCompatActivity {
         back_from_categories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                work_c_buttonSmall.setElevation(1);
                 Intent intent = new Intent(CategoriesActivity.this, HomeActivity.class);
                 startActivity(intent);
             }

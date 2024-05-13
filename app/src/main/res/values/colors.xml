@@ -7,8 +7,8 @@
     <color name="JDYellow">#ffde00</color>
     <color name="JDGray100">#f0f0f0</color>
     <color name="JDGray200">#dddddd</color>
-    <color name="ElectricBlue">#7EE8FA</color>
-    <color name="Fandango">#A4036F</color>
+    <color name="Cambridge">#88cbac</color>
+    <color name="Indigo">#0B435B</color>
 
 
     <color name="yellow100">#8A2BE2</color>
@@ -24,5 +24,6 @@
     <color name="transparent">#00000000</color>
     <color name="transparent_black">#80000000</color>
     <color name="Fandango_dark">#8C035E</color>
+
 
 </resources>
