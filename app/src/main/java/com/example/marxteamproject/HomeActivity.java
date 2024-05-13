@@ -4,15 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Map;
+
 public class HomeActivity extends AppCompatActivity {
     LinearLayout mapBtn;
     LinearLayout notesBtn;
+    Map<String, Object> map;
     LinearLayout dealerBtn;
     LinearLayout weatherBtn;
+
     TextView categoriesBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +64,16 @@ public class HomeActivity extends AppCompatActivity {
         categoriesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(HomeActivity.this, TractorSetupScreen.class);
-                startActivity(intent);
-
+                map = addUserTractor.getTractorNum();
+                Log.w("get Tractor", map.toString());
+                if (addUserTractor.getTractorNum().isEmpty()) {
+                    Intent intent = new Intent(HomeActivity.this, TractorSetupScreen.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(HomeActivity.this, MachineOverview.class);
+                    startActivity(intent);
+                }
             }
         });
 

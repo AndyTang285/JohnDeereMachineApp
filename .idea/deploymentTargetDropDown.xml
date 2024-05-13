@@ -2,9 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="AddTractor">
-        <State />
-      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
@@ -13,12 +10,12 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\143868\.android\avd\Pixel_7_API_TiramisuPrivacySandbox.avd" />
+                  <value value="C:\Users\143868\.android\avd\Pixel_7_Pro_API_TiramisuPrivacySandbox.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-26T20:21:03.804679600Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-05-13T18:18:31.051079100Z" />
         </State>
       </entry>
     </value>

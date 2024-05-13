@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -55,7 +56,7 @@ public class MachineOverview extends AppCompatActivity {
 //Tractor 1 Image load
                 tractorModelNum = (String) tractorList.get(i);
                 tractorModelNum = tractorModelNum.replace("{", "").replace("}", "").replace("[", "").replace("]", "");
-                //image.setImageResource(images[e]);
+                images[e].setVisibility(View.VISIBLE);
                 TractorImage1.setFirebaseImage(tractorModelNum);
                 TractorImage1.getFirebaseImage((images[e]), this);
                 e++;

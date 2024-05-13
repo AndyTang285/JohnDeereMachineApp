@@ -14,6 +14,7 @@ public class AddTractor extends AppCompatActivity {
 
     public static addUserTractor tractor = new addUserTractor();
     Button Sbutton;
+
     EditText TractorNum;
     EditText TractorType; 
     public static String TractorModelNum;

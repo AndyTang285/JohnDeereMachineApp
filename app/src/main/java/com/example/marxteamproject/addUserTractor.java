@@ -15,6 +15,7 @@ import java.util.Objects;
 public class addUserTractor {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static int i = 0;
+
     private static CollectionReference documentReference;
    public Map<String, Object> tractors = new HashMap<>();
     private static  Map<String, Object> currentTractors = new HashMap<>();
@@ -34,6 +35,7 @@ public class addUserTractor {
     public static Map<String, Object> getTractorNum()
 
     {
+
         documentReference
                 .get()
                 .addOnCompleteListener(task -> {
@@ -55,4 +57,11 @@ public class addUserTractor {
         return currentTractors;
 
     }
+   /* public static boolean getNum(){
+        if()
+
+
+
+        return true;
+        */
 }
