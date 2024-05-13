@@ -95,7 +95,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             return false;
         }
 
-
         if(password.length()<6) {
             newPasswordText.setError("Password length is invalid");
         }

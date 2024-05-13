@@ -2,22 +2,30 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION_LOCATION"/>
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE_LOCATION" />
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MARXTeamProject"
         tools:targetApi="31">
-
         <activity
+            android:name=".CreatePinActivity"
             android:name=".NotesDetailedActivity"
             android:exported="false" />
         <activity
@@ -27,16 +35,25 @@
             android:name=".Utility"
             android:exported="false" />
         <activity
+            android:name=".NoteDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false" />
+        <activity
             android:name=".WeatherActivity"
             android:exported="false" />
         <activity
             android:name=".DealerActivity"
             android:exported="false" />
         <activity
-            android:name=".NotesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MapActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".CategoriesActivity"
@@ -45,15 +62,20 @@
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
+            android:name=".MapActivity"
+            android:exported="true">
             android:name=".MainActivity"
             android:exported="false">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBanHJxCFrb_-N3nI_f9C57tdmFDHFO3pU"/>
         <activity
             android:name=".TractorScreen"
             android:exported="true">

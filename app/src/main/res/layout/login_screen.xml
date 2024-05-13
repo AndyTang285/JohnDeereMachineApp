@@ -16,14 +16,12 @@
         android:id="@+id/sign_in_icon"
         android:src="@drawable/logo"/>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/sign_in_icon"
         android:id="@+id/create_account_hello_text"
         android:orientation="vertical">
-
 
         <TextView
             android:layout_width="match_parent"
@@ -62,8 +60,6 @@
             android:layout_marginTop="12dp"
             />
 
-
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,17 +72,9 @@
             android:layout_marginTop="12dp"
 
             />
-        <!--        <TextView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:id="@+id/Forgot_Password"-->
-        <!--            android:hint="@string/forget_password"-->
-        <!--            android:textSize="20sp"-->
-        <!--            android:padding="16dp"-->
-        <!--            android:layout_marginTop="12dp"/>-->
 
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:id="@+id/login_btn"
@@ -125,12 +113,6 @@
             android:textStyle="bold"
             android:text=" Create Account"/>
 
-
-
     </LinearLayout>
-
-
-
-
 
 </RelativeLayout>
