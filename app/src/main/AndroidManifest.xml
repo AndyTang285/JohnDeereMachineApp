@@ -21,6 +21,9 @@
         android:theme="@style/Theme.MARXTeamProject"
         tools:targetApi="31">
         <activity
+            android:name=".CreatePinActivity"
+            android:exported="false" />
+        <activity
             android:name=".NoteDetailsActivity"
             android:exported="false" />
         <activity

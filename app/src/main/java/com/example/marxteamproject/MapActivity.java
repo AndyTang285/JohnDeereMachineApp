@@ -1,5 +1,8 @@
 package com.example.marxteamproject;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -19,6 +22,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.AdvancedMarkerOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -33,8 +37,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import android.Manifest;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -47,10 +56,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     FloatingActionButton currentLocationBtn;
     public static int LOCATION_REQUEST_CODE = 100;
 
+    private Marker currentLocationMarker;
+
     // creating a variable
     // for search view.
     SearchView searchView;
     LinearLayout pinInfoPg;
+
+    EditText pinNameText;
 
     //initializing system to find current location
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -68,6 +81,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     CollectionReference home = docRef.collection("home");
     CollectionReference work = docRef.collection("work");
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,9 +92,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         //find current location button from the layout
         currentLocationBtn = findViewById(R.id.current_location);
-
-        //when clicked, finds current location again
-        currentLocationBtn.setOnClickListener((v -> handler()));
 
 
         // Obtain the SupportMapFragment and get notified
@@ -140,6 +151,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 return false;
             }
         });
+
 
 
         work.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -221,15 +233,17 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
                     LatLng userLocation = new LatLng(lat, lng);
 
+                    if (currentLocationMarker != null) {
+                        currentLocationMarker.remove();
+                    }
+
+                    currentLocationMarker = map.addMarker(new MarkerOptions().position(userLocation).title("Me"));
+
                     map.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
                     map.animateCamera(CameraUpdateFactory.zoomTo(15));
 
-                    if (map != null) {
-                        map.clear();
-                        map.addMarker(new MarkerOptions().position(userLocation).title("Me"));
-                    }
-
                     Log.i("XOXO", "" + lat + " " + lng);
+
                 }
             }
         });
@@ -239,17 +253,61 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-        map.getUiSettings().setMyLocationButtonEnabled(true);
 
-        map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+        /*map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(@NonNull LatLng latLng) {
                 handler.removeCallbacks(runnable);
                 map.addMarker(new AdvancedMarkerOptions().position(latLng));
-                pinInfoPg.setVisibility(View.VISIBLE);
+                Intent intent  = new Intent(MapActivity.this, CreatePinActivity.class);
+                startActivity(intent);
+            }
+        });*/
 
+        //when clicked, finds current location again
+        currentLocationBtn.setOnClickListener((v -> handler()));
+
+        map.setOnCameraMoveStartedListener(new GoogleMap.OnCameraMoveStartedListener() {
+            @Override
+            public void onCameraMoveStarted(int i) {
+                handler.removeCallbacks(runnable);
+            }
+        });
+
+        map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(@NonNull LatLng latLng) {
+                handler.removeCallbacks(runnable);
+                showPinPopup(findViewById(R.id.map_fragment), latLng);
             }
         });
 
     }
+
+    private void showPinPopup(View view, LatLng latLng) {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View pinPopup = inflater.inflate(R.layout.create_pin_screen, null);
+        PopupWindow popupWindow = new PopupWindow(pinPopup, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT,true);
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        pinPopup.findViewById(R.id.cancel_pin_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+
+        pinPopup.findViewById(R.id.create_pin_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               pinNameText = pinPopup.findViewById(R.id.pin_name_edit_text);
+                String pinName = pinNameText.getText().toString();
+                MarkerOptions marker = new MarkerOptions().position(latLng).title(pinName);
+                map.addMarker(marker);
+                popupWindow.dismiss();
+            }
+        });
+    }
+
+
 }
