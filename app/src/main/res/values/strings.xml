@@ -37,4 +37,12 @@
     <string name="extraBackText">Back</string>
     <string name="add_new_note">Add New Note</string>
 
+    <string-array name="pin_colors">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Yellow</item>
+        <item>Purple</item>
+    </string-array>
+
 </resources>
