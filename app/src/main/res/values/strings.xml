@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MARX Team Project</string>
 
     <string name="hello" />
@@ -30,8 +30,11 @@
     <string name="TractorDisplayPageHeader">Tractors</string>
     <string name="todo">TODO</string>
     <string name="button">Button</string>
-    <string name="tractor1">Tractor1</string>
+    <string name="tractor1" tools:ignore="Typos">Tractor1</string>
     <string name="TractorDescription">Description</string>
     <string name="Tractor1Name">Tractor Name</string>
     <string name="TractorForumHeader">Tractor Forum</string>
+    <string name="loading" tools:ignore="TypographyEllipsis">Loading User Machines...</string>
+    <string name="home">Home</string>
+    <string name="reload">Reload</string>
 </resources>

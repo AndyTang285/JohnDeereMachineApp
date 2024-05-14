@@ -22,9 +22,11 @@ public static String tractor1Info;
         super.onCreate(savedInstanceState);
         if(MachineOverview.modelNum != null){
             ModelNum = MachineOverview.modelNum;
+            MachineOverview.modelNum = null;
         }
         else {
             ModelNum = AddTractor.TractorModelNum;
+            AddTractor.TractorModelNum = null;
         }
         FireBaseStorage TractorImage1 = new FireBaseStorage();
         TractorImage1.setFirebaseImage(ModelNum);
@@ -33,7 +35,8 @@ public static String tractor1Info;
 
        TractorImage1.getFirebaseImage(findViewById(R.id.Tractor_image_1), this);
        TractorStatusTextView = findViewById(R.id.status_info_text);
-       tractortype = AddTractor.MachineType;
+
+       tractortype = extra.getType(ModelNum);
        DatabaseInfo Tractor1 = new DatabaseInfo();
         TractorInfoTextView = findViewById(R.id.info_info_text);
         TextView TractorName = findViewById(R.id.tractor_name);

@@ -33,6 +33,10 @@
             android:exported="false" />
         <activity
             android:name=".MachineOverview"
+            android:exported="true"
+            />
+        <activity
+            android:name=".LoadingScreen"
             android:exported="true"/>
         <activity
             android:name=".HomeActivity"

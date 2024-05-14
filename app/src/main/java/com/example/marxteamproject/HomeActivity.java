@@ -12,7 +12,6 @@ import java.util.Map;
 public class HomeActivity extends AppCompatActivity {
     LinearLayout mapBtn;
     LinearLayout notesBtn;
-    static Map<String, Object> map;
     LinearLayout dealerBtn;
     LinearLayout weatherBtn;
 
@@ -48,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         categoriesBtn.setOnClickListener(view -> {
-                Intent intent = new Intent(HomeActivity.this, MachineOverview.class);
+                Intent intent = new Intent(HomeActivity.this, LoadingScreen.class);
                 startActivity(intent);
             });
 

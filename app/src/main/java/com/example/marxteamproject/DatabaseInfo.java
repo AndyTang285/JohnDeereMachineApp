@@ -21,7 +21,7 @@ public class DatabaseInfo {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference Combines = database.getReference(TractorType);
         DatabaseReference CombineS650 = Combines.child(ModelNum);
-        DatabaseReference CombineS650Specs = CombineS650.child("Info");
+        DatabaseReference CombineS650Specs = CombineS650.child("Specs");
         ChildEventListener childEventListener = new ChildEventListener() {
 
             @Override

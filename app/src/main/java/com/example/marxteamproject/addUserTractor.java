@@ -17,7 +17,7 @@ public class addUserTractor {
 
     private static CollectionReference documentReference;
     public static Map<String, Object> tractors = new HashMap<>();
-    private static  Map<String, Object> currentTractors = new HashMap<>();
+    private static Map<String, Object> currentTractors = new HashMap<>();
 
     public void saveNoteToFirebase(String tractor, String docId) {
 
@@ -31,7 +31,7 @@ public class addUserTractor {
     //update note
 //   documentReference = UserTractors.getCollectionReferenceForTractor(docId).document();
 // documentReference.set(tractor);
-    public synchronized Map<String, Object> getTractorNum() {
+    public static synchronized Map<String, Object> getTractorNum() {
         documentReference = FirebaseFirestore.getInstance().collection("tractors").document("default").collection("work");
 
 
