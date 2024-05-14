@@ -10,21 +10,22 @@ import androidx.appcompat.app.AppCompatActivity;
 public class TractorScreen extends AppCompatActivity {
 
 
-    public static FireBaseStorage TractorImage2;
     public TextView TractorInfoTextView;
 
    public TextView TractorStatusTextView;
    public String tractortype;
    public String ModelNum;
 public static String tractor1Info;
-   public String InfoType;
-    public static FireBaseStorage TractorImage1 = new FireBaseStorage();
    public String tractor1Specs;
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.tractor_screen);
         super.onCreate(savedInstanceState);
-        ModelNum = AddTractor.TractorModelNum;
-
+        if(MachineOverview.modelNum != null){
+            ModelNum = MachineOverview.modelNum;
+        }
+        else {
+            ModelNum = AddTractor.TractorModelNum;
+        }
         FireBaseStorage TractorImage1 = new FireBaseStorage();
         TractorImage1.setFirebaseImage(ModelNum);
 

@@ -32,8 +32,17 @@
             android:name=".CategoriesActivity"
             android:exported="false" />
         <activity
+            android:name=".MachineOverview"
+            android:exported="true"/>
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
+        <activity
+            android:name=".TractorScreen"
+            android:exported="true"/>
+        <activity
+            android:name=".AddTractor"
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -44,30 +53,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".TractorScreen"
-            android:exported="true">
 
 
-        </activity>
-        <activity
-            android:name=".AddTractor"
-            android:exported="true">
 
-
-        </activity>
-        <activity
-            android:name=".MachineOverview"
-            android:exported="true">
-
-
-        </activity>
-        <activity
-            android:name=".TractorSetupScreen"
-            android:exported="true">
-
-
-        </activity>
     </application>
 
 </manifest>

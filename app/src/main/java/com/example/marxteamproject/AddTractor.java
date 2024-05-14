@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AddTractor extends AppCompatActivity {
 
-    public static addUserTractor tractor = new addUserTractor();
     Button Sbutton;
 
     EditText TractorNum;
@@ -34,7 +33,7 @@ public class AddTractor extends AppCompatActivity {
 
                     MachineType = TractorType.getText().toString();
                     TractorModelNum = TractorNum.getText().toString();
-                    tractor.saveNoteToFirebase(TractorModelNum , "work", MachineType);
+                    tractor.saveNoteToFirebase(TractorModelNum , "work");
                     Log.w("current" , tractor.getTractorNum().toString());
                     Intent intent = new Intent(AddTractor.this, TractorScreen.class);
                     startActivity(intent);
