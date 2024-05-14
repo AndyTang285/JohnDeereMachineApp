@@ -159,8 +159,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         });
 
-
-
         work.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -185,7 +183,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     double pinLatitude = document.getDouble("latitude");
                     double pinLongitude = document.getDouble("longitude");
                     LatLng pinLocation = new LatLng(pinLatitude, pinLongitude);
-                    map.addMarker(new MarkerOptions().position(pinLocation).title(pinName).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                    map.addMarker(new MarkerOptions().position(pinLocation).title(pinName).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
                 }
             }
         });
@@ -258,7 +256,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                         currentLocationMarker.remove();
                     }
 
-                    currentLocationMarker = map.addMarker(new MarkerOptions().position(userLocation).title("Me"));
+                    currentLocationMarker = map.addMarker(new MarkerOptions().position(userLocation).title("Me").icon(BitmapDescriptorFactory.fromResource(R.drawable.vishu)));
 
                     map.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
                     map.animateCamera(CameraUpdateFactory.zoomTo(15));
@@ -296,7 +294,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 handler.removeCallbacks(runnable);
             }
         });
-
     }
 
     //Pin popup
@@ -323,7 +320,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
                pinNameText = pinPopup.findViewById(R.id.pin_name_edit_text);
                 String pinName = pinNameText.getText().toString();
-                MarkerOptions marker = new MarkerOptions().position(latLng).title(pinName).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                MarkerOptions marker = new MarkerOptions().position(latLng).title(pinName).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
                 map.addMarker(marker);
                 // Store the pin in Firestore
                 storePinInFirestore(latLng, pinName);
