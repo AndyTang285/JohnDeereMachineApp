@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION_LOCATION" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -56,20 +55,19 @@
             android:exported="false" />
         <activity
             android:name=".MachineOverview"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".LoadingScreen"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".TractorScreen"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".AddTractor"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -82,24 +80,12 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBanHJxCFrb_-N3nI_f9C57tdmFDHFO3pU"/>
-        <activity
-            android:name=".TractorScreen"
-            android:exported="true">
+            android:value="AIzaSyBanHJxCFrb_-N3nI_f9C57tdmFDHFO3pU" />
 
-
-        </activity>
-        <activity
-            android:name=".AddTractor"
-            android:exported="true">
-
-
-        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
 
 
     </application>

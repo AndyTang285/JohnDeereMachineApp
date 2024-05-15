@@ -7,8 +7,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Map;
-
 public class HomeActivity extends AppCompatActivity {
     LinearLayout mapBtn;
     LinearLayout notesBtn;
@@ -16,6 +14,7 @@ public class HomeActivity extends AppCompatActivity {
     LinearLayout weatherBtn;
 
     TextView categoriesBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,18 +46,13 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         categoriesBtn.setOnClickListener(view -> {
-                Intent intent = new Intent(HomeActivity.this, LoadingScreen.class);
-                startActivity(intent);
-            });
-
-        categoriesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, CategoriesActivity.class);
-                startActivity(intent);
-
-            }
-
+            Intent intent = new Intent(HomeActivity.this, LoadingScreen.class);
+            startActivity(intent);
         });
+
+
     }
 }
+
+
+
