@@ -55,8 +55,21 @@
             android:name=".CategoriesActivity"
             android:exported="false" />
         <activity
+            android:name=".MachineOverview"
+            android:exported="true"
+            />
+        <activity
+            android:name=".LoadingScreen"
+            android:exported="true"/>
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
+        <activity
+            android:name=".TractorScreen"
+            android:exported="true"/>
+        <activity
+            android:name=".AddTractor"
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -86,6 +99,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+
+
     </application>
 
 </manifest>

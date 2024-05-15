@@ -11,19 +11,24 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class FireBaseStorage extends FragmentActivity {
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReference();
+    private StorageReference TractorImage;
 
-    public void FirebaseImage(ImageView rImage, Context context, String TractorPhoto) {
+    public void setFirebaseImage(String TractorModelNum){
 
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        StorageReference TractorImage = storageRef.child( "/Tractors/" + TractorPhoto + ".jpg");
+         this.TractorImage = storageRef.child( "/Tractors/" + TractorModelNum + ".jpg");
+
+    }
+
+    public void getFirebaseImage(ImageView rImage, Context context) {
+
+
+
         Glide.with(context)
                 .load(TractorImage)
                 .placeholder(R.drawable.placeholder)
                 .into(rImage);
-
-
-
 
     }
 
