@@ -24,10 +24,10 @@ public class MachineOverview extends AppCompatActivity {
     ImageButton addButton;
     public static String modelNum;
     TextView tractorNote;
-    Button Homebutton;
+    ImageButton Homebutton;
     Button ReloadButton;
-    Map<String, Object> currentTractors = new HashMap<>();
-    ArrayList<String> tractorList = new ArrayList<>();
+    static Map<String, Object> currentTractors = new HashMap<>();
+    static ArrayList<String> tractorList = new ArrayList<>();
     String tractorModelNum;
     int i = 0;
     FireBaseStorage TractorImage1 = new FireBaseStorage();
@@ -45,9 +45,8 @@ public class MachineOverview extends AppCompatActivity {
 
         addButton = findViewById(R.id.add_tractor_ImageButton);
         // image = findViewById(R.id.Tractor_image1);
-
         currentTractors = addUserTractor.getTractorNum();
-        if (!(currentTractors == null)) {
+
             if (currentTractors.isEmpty()) {
                 if (tractorNote != null) {
                     tractorNote.setVisibility(View.VISIBLE);
@@ -56,9 +55,10 @@ public class MachineOverview extends AppCompatActivity {
             } else {
 
 
-                for (int a = 0; a < Objects.requireNonNull(currentTractors).size(); a++) {
-                    tractorList.add((Objects.requireNonNull(currentTractors.get(String.valueOf(a)))).toString());
-                }
+                    for (int a = 0; a < (currentTractors).size(); a++) {
+                        tractorList.add(Objects.requireNonNull(currentTractors.get(String.valueOf(a))).toString());
+                    }
+
                 android.util.Log.d("Final", tractorList.toString());
                 //get rid of duplicates
                 Set<String> set = new HashSet<>(tractorList);
@@ -119,6 +119,8 @@ public class MachineOverview extends AppCompatActivity {
                 startActivity(intent);
             });
             Homebutton.setOnClickListener(v -> {
+                currentTractors.clear();
+                tractorList.clear();
                 Intent intent = new Intent(MachineOverview.this, HomeActivity.class);
                 startActivity(intent);
             });
@@ -128,7 +130,7 @@ public class MachineOverview extends AppCompatActivity {
                     startActivity(intent);
                 });
             }
-        }
+
 
 
     }

@@ -22,30 +22,23 @@ public class CategoriesActivity extends AppCompatActivity {
         back_from_categories = findViewById(R.id.backFromCategories);
 
 
-        work_c_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                work_c_button.setTranslationZ(0);
-                Intent intent = new Intent(CategoriesActivity.this, AddTractor.class);
-                startActivity(intent);
-            }
+        work_c_button.setOnClickListener(view -> {
+            work_c_button.setTranslationZ(0);
+            addUserTractor.setScreen(true);
+            Intent intent = new Intent(CategoriesActivity.this, LoadingScreen.class);
+            startActivity(intent);
         });
 
-        home_c_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                home_c_button.setTranslationZ(0);
-                Intent intent = new Intent(CategoriesActivity.this, AddTractor.class);
-                startActivity(intent);
-            }
+        home_c_button.setOnClickListener(view -> {
+            home_c_button.setTranslationZ(0);
+            addUserTractor.setScreen(false);
+            Intent intent = new Intent(CategoriesActivity.this, LoadingScreen.class);
+            startActivity(intent);
         });
 
-        back_from_categories.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CategoriesActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
+        back_from_categories.setOnClickListener(view -> {
+            Intent intent = new Intent(CategoriesActivity.this, HomeActivity.class);
+            startActivity(intent);
         });
 
     }

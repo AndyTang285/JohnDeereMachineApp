@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         categoriesBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(HomeActivity.this, LoadingScreen.class);
+            Intent intent = new Intent(HomeActivity.this, CategoriesActivity.class);
             startActivity(intent);
         });
 

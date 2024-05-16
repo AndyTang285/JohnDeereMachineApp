@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">MARX Team Project</string>
 
     <string name="hello" />
@@ -44,4 +44,5 @@
     <string name="loading">Loading User Machines...</string>
     <string name="home">Home</string>
     <string name="reload">Reload</string>
+    <string name="homeDes">home</string>
 </resources>

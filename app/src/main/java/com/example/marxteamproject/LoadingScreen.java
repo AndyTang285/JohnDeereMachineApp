@@ -30,6 +30,6 @@ public class LoadingScreen extends AppCompatActivity {
 
             // Finish the LoadingScreen activity.
             finish();
-        }, 3000);
+        }, 3500);
     }
 }

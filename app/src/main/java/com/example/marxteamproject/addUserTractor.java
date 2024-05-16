@@ -2,7 +2,10 @@ package com.example.marxteamproject;
 
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -14,14 +17,26 @@ public class addUserTractor {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static int i = 0;
+    public static String page;
 
     private static CollectionReference documentReference;
+    private static DocumentReference collectionReference;
     public static Map<String, Object> tractors = new HashMap<>();
     private static Map<String, Object> currentTractors = new HashMap<>();
 
-    public void saveNoteToFirebase(String tractor, String docId) {
+public static void setScreen(boolean work){
+    if(work) {
+            page = "work";
+        }
+    else{
+        page = "home";
+    }
+    }
 
-        documentReference = db.collection("tractors").document("default").collection(docId);
+    public void saveNoteToFirebase(String tractor, String docId) {
+        FirebaseUser currentUser =  FirebaseAuth.getInstance().getCurrentUser();
+        assert currentUser != null;
+        documentReference = db.collection("tractors").document(currentUser.getUid()).collection(page);
         tractors.put("tractorModelNum", tractor);
         // tractors.put("tractorType", tractorType);
         documentReference
@@ -32,7 +47,11 @@ public class addUserTractor {
 //   documentReference = UserTractors.getCollectionReferenceForTractor(docId).document();
 // documentReference.set(tractor);
     public static synchronized Map<String, Object> getTractorNum() {
-        documentReference = FirebaseFirestore.getInstance().collection("tractors").document("default").collection("work");
+        FirebaseUser currentUser =  FirebaseAuth.getInstance().getCurrentUser();
+
+
+        assert currentUser != null;
+        documentReference = FirebaseFirestore.getInstance().collection("tractors").document(currentUser.getUid()).collection(page);
 
 
         documentReference
@@ -42,25 +61,27 @@ public class addUserTractor {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             currentTractors.put(String.valueOf(i), (Objects.requireNonNull(document.get("tractorModelNum"))).toString());
 
-                        Log.d("Current", currentTractors.toString());
+                            Log.d("Current", currentTractors.toString());
 
                             i++;
 
                         }
 
                     } else {
-                       Log.w( "Error getting documents.", task.getException());
+                        Log.w( "Error getting documents.", task.getException());
                     }
 
                 });
         return currentTractors;
 
     }
-   /* public static boolean getNum(){
-        if()
+    /*
+    public static void deleteTractor(String tractor){
+        FirebaseUser currentUser =  FirebaseAuth.getInstance().getCurrentUser();
+        assert currentUser != null;
+        collectionReference = FirebaseFirestore.getInstance().collection("tractors").document(currentUser.getUid()).collection(page).document(tractor);
+        collectionReference.delete();
+    }
 
-
-
-        return true;
-        */
+     */
 }

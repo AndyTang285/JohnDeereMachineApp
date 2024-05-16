@@ -16,8 +16,12 @@ public class FireBaseStorage extends FragmentActivity {
     private StorageReference TractorImage;
 
     public void setFirebaseImage(String TractorModelNum){
+        if(!TractorModelNum.equals("450E (2023)")){
+            this.TractorImage = storageRef.child( "/Tractors/" + TractorModelNum + ".jpg");
+        }else{
+            this.TractorImage = storageRef.child( "/Tractors/" + TractorModelNum + ".jpeg");
+        }
 
-         this.TractorImage = storageRef.child( "/Tractors/" + TractorModelNum + ".jpg");
 
     }
 
