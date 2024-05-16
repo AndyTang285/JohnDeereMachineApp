@@ -43,6 +43,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -295,10 +296,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         });
 
-
         //when clicked, finds current location again
         currentLocationBtn.setOnClickListener((v -> handler()));
-
 
         //when map dragged, stop always taking user back to current  location
         map.setOnCameraMoveStartedListener(new GoogleMap.OnCameraMoveStartedListener() {
@@ -314,11 +313,23 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.edit_pin_screen, null);
 
-         changePinName = popupView.findViewById(R.id.change_pin_name);
-
         // Create a PopupWindow and show it
         PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         popupWindow.showAtLocation(mapFragment.getView(), Gravity.CENTER, 0, 0);
+
+        String pinName = marker.getTitle();
+        EditText changePinName = (EditText) popupView.findViewById(R.id.change_pin_name);
+        changePinName.setText(pinName);
+        changePinName.setEnabled(true);
+        changePinName.setFocusableInTouchMode(true);
+
+
+        popupView.findViewById(R.id.save_pin_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
 
         popupView.findViewById(R.id.cancel_pin_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -326,6 +337,24 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 popupWindow.dismiss();
             }
         });
+
+        //when user clicks cancel button, the popup closes and no pin is created
+        popupView.findViewById(R.id.cancel_pin_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+
+        popupView.findViewById(R.id.delete_pin_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                popupWindow.dismiss();
+
+            }
+        });
+
     }
 
     //Pin popup
@@ -350,7 +379,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             @Override
             public void onClick(View v) {
 
-               pinNameText = pinPopup.findViewById(R.id.pin_name_edit_text);
+                pinNameText = pinPopup.findViewById(R.id.pin_name_edit_text);
                 String pinName = pinNameText.getText().toString();
                 MarkerOptions marker = new MarkerOptions().position(latLng).title(pinName).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
                 map.addMarker(marker);

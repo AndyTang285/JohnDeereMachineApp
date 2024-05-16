@@ -55,6 +55,7 @@
             android:backgroundTint="@color/white"
             android:padding="16dp"
             android:layout_marginTop="12dp"
+            android:enabled="true"
             />
 
 
@@ -64,8 +65,8 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_below="@id/pin_screen_form"
-        android:id="@+id/create_pin_btn"
-        android:text="Create Pin"
+        android:id="@+id/save_pin_btn"
+        android:text="Save Pin"
         android:layout_marginTop="12dp"
         android:layout_marginHorizontal="20dp"
         android:textSize="16sp"
@@ -77,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:id="@+id/cancel_pin_btn"
-        android:layout_below="@id/create_pin_btn"
+        android:layout_below="@id/save_pin_btn"
         android:text="Cancel"
         android:layout_marginHorizontal="20dp"
         android:textSize="16sp"
@@ -85,6 +86,14 @@
         android:foregroundTint="@color/JDRed"
         android:backgroundTint="@color/JDRed"/>
 
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/delete_pin_btn"
+        android:src="@drawable/delete"
+        android:backgroundTint="@color/JDRed"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"/>
 
 </RelativeLayout>
