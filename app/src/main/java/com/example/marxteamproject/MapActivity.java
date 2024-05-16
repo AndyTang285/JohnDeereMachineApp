@@ -47,6 +47,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -69,6 +70,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     LinearLayout pinInfoPg;
 
     EditText pinNameText;
+
+    EditText changePinName;
 
     //initializing system to find current location
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -282,6 +285,16 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         });
 
+        //click on a pin, and edit screen pops up
+        map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                // Show the popup here
+                showEditPinPopup(marker);
+                return true;
+            }
+        });
+
 
         //when clicked, finds current location again
         currentLocationBtn.setOnClickListener((v -> handler()));
@@ -292,6 +305,25 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             @Override
             public void onCameraMoveStarted(int i) {
                 handler.removeCallbacks(runnable);
+            }
+        });
+    }
+
+    private void showEditPinPopup( Marker marker) {
+        // Inflate the popup layout
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.edit_pin_screen, null);
+
+         changePinName = popupView.findViewById(R.id.change_pin_name);
+
+        // Create a PopupWindow and show it
+        PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        popupWindow.showAtLocation(mapFragment.getView(), Gravity.CENTER, 0, 0);
+
+        popupView.findViewById(R.id.cancel_pin_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
             }
         });
     }
@@ -322,6 +354,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 String pinName = pinNameText.getText().toString();
                 MarkerOptions marker = new MarkerOptions().position(latLng).title(pinName).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
                 map.addMarker(marker);
+
                 // Store the pin in Firestore
                 storePinInFirestore(latLng, pinName);
                 popupWindow.dismiss();
