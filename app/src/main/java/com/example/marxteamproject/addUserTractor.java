@@ -38,7 +38,6 @@ public static void setScreen(boolean work){
         assert currentUser != null;
         documentReference = db.collection("tractors").document(currentUser.getUid()).collection(page);
         tractors.put("tractorModelNum", tractor);
-        // tractors.put("tractorType", tractorType);
         documentReference
                 .add(tractors);
     }
