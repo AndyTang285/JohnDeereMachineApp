@@ -49,16 +49,16 @@
             android:name=".DealerActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MapActivity"
             android:exported="false" />
         <activity
             android:name=".CategoriesActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MapActivity"
+            android:name=".HomeActivity"
             android:exported="true">
 
             <intent-filter>

@@ -86,10 +86,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     //tractor coordinates
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    DocumentReference docRef = db.collection("tractors").document("default");
-    CollectionReference home = docRef.collection("home");
-    CollectionReference work = docRef.collection("work");
-
+    CollectionReference tractorCoordinates = db.collection("tractorCoordinates");
     CollectionReference pins = db.collection("pins");
 
     @SuppressLint("MissingInflatedId")
@@ -163,17 +160,17 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         });
 
-        work.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        tractorCoordinates.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for(QueryDocumentSnapshot document : queryDocumentSnapshots) {
                     String tractorID = document.getId();
-                    /*String tractorName = document.getString("tractorName");
-                    double tractorLatitude = document.getDouble("tractorLatitude");
-                    double tractorLongitude = document.getDouble("tractorLongitude");
+                    String tractorName = document.getString("name");
+                    double tractorLatitude = document.getDouble("latitude");
+                    double tractorLongitude = document.getDouble("longitude");
                     Log.i("XDXD", tractorID + "Latitude: " + tractorLatitude + " " + "Longitude: " + tractorLongitude);
                     LatLng tractorLocation = new LatLng(tractorLatitude, tractorLongitude);
-                    map.addMarker(new MarkerOptions().position(tractorLocation).title(tractorName));*/
+                    map.addMarker(new MarkerOptions().position(tractorLocation).title(tractorName).icon(BitmapDescriptorFactory.fromResource(R.drawable.tractormap)));
                 }
             }
         });

@@ -23,21 +23,21 @@
             android:textStyle="bold"/>
 
         <ImageButton
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:id="@+id/save_note_btn"
             android:src="@drawable/checkmark"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             app:tint="@color/white"
-            android:background="?attr/selectableItemBackgroundBorderless"/>
-
+            android:background="?attr/selectableItemBackgroundBorderless" />
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/notes_title"
         android:layout_below="@+id/notes_title_bar_layout"
         android:orientation="vertical"
         android:padding="16dp"
@@ -56,6 +56,20 @@
             android:padding="12dp"
             android:textColor="@color/black"/>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notes_title"
+        android:id="@+id/notes_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginVertical="10dp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/rounded_conner">
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,24 +81,47 @@
             android:layout_marginVertical="8dp"
             android:padding="12dp"
             android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttons"
+        android:orientation="horizontal"
+        android:layout_marginVertical="10dp"
+        android:gravity="center_horizontal"
+
+        android:layout_below="@id/notes_content">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:text="Cancel"
+            android:id="@+id/cancel_note_btn"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:background="@drawable/rounded_conner"
+            app:backgroundTint="@color/gray"
+            />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:id="@+id/delete_note_btn"
+            android:text="delete"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_conner"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            app:backgroundTint="@color/JDRed"
+            android:visibility="gone"
+            />
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:id="@+id/delete_note_btn"
-        android:text="delete"
-        android:layout_marginTop="12dp"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_conner"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        app:backgroundTint="@color/JDRed"
-        android:gravity="center"
-        android:visibility="gone"/>
 
 
 </RelativeLayout>
